@@ -8,6 +8,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { Facebook } from '@ionic-native/facebook';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
@@ -46,6 +48,7 @@ messagingSenderId: "872089775365"*/
   providers: [
     StatusBar,
     SplashScreen,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
