@@ -12,6 +12,7 @@ import { Facebook } from '@ionic-native/facebook';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatPageModule } from "../pages/chat/chat.module";
 
 export const firebaseConfig = {
 /*apiKey: "AIzaSyB1Za2wf9IAWLc194nhmrba8E6M8_9sSBU",
@@ -38,7 +39,8 @@ messagingSenderId: "872089775365"*/
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ChatPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

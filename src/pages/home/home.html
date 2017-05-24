@@ -1,13 +1,21 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     Enlaces
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <h1>Hello {{displayName}}</h1>
-	<button ion-button outline (click)="signInWithFacebook()">Login</button>
-  <button ion-button outline (click)="signOut()">Logout</button>
+
+  <button ion-button outline (click)="goToChat()">chat</button>
+
+  <ion-list>
+		<!--<ion-item class="text" *ngFor="let item of items | async">
+<h2>{{item.url}}</h2>-->
+    <a ion-item [href]='item.url' class="text" *ngFor="let item of items | async" >
+      {{item.nombre}}</a>
+<!--[routerLink]="item.url"-->
+		<!--</ion-item>-->
+	</ion-list>
 </ion-content>
