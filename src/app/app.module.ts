@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChatPageModule } from "../pages/chat/chat.module";
 import { TabsPage } from "../pages/tabs/tabs";
+import { LoginPageModule } from "../pages/login/login.module";
 
 export const firebaseConfig = {
 /*apiKey: "AIzaSyB1Za2wf9IAWLc194nhmrba8E6M8_9sSBU",
@@ -42,7 +43,8 @@ messagingSenderId: "872089775365"*/
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ChatPageModule
+    ChatPageModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -15,8 +15,34 @@
 
 <ion-content padding>
 
- <h1>Hello {{displayName}}</h1>
+<div>
+<h1>Hello {{displayName}}</h1>
 	<button *ngIf="!displayName" ion-button outline (click)="signInWithFacebook()">Login</button>
   <button *ngIf="displayName" ion-button outline (click)="signOut()">Logout</button>
+</div>
 
+
+<div>
+  <ion-list>
+    <ion-list-header>
+      Messages
+    </ion-list-header>
+    <ion-item *ngFor="let item of items | async">
+    {{item.message}}
+    </ion-item>
+  </ion-list>
+</div>
+
+
+<ion-item>
+    <ion-label color="primary" floating>Message</ion-label>
+    <ion-input [(ngModel)]="msgVal"></ion-input>
+
+
+</ion-item>
+<button ion-button outline (click)="chatSend()">send  </button>
+
+<h2>
+{{msgVal}}
+</h2>
 </ion-content>

@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import {
+  Component
+} from '@angular/core';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  Platform
+} from 'ionic-angular';
 
 import {
   AngularFireAuth
@@ -9,6 +16,11 @@ import * as firebase from 'firebase/app';
 import {
   Facebook
 } from '@ionic-native/facebook';
+import {
+  AngularFireDatabase,
+  FirebaseListObservable
+} from 'angularfire2/database';
+
 
 /**
  * Generated class for the ChatPage page.
@@ -22,26 +34,30 @@ import {
   templateUrl: 'chat.html',
 })
 export class ChatPage {
-  displayName:string;
-  constructor(public navCtrl: NavController, private afAuth: AngularFireAuth, private platform: Platform, private fb: Facebook) {
+  displayName: string;
+  msgVal: string = '';
+  items: FirebaseListObservable < any[] > ;
+  constructor(public navCtrl: NavController, private afAuth: AngularFireAuth, private platform: Platform, private fb: Facebook,private  afDB: AngularFireDatabase) {
 
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.afAuth.authState.subscribe(user => {
       if (!user) {
         this.displayName = null;
         return;
       }
       this.displayName = user.displayName;
+      this.items = this.afDB.list('/messages');
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
+
   }
 
-    signInWithFacebook() {
+  signInWithFacebook() {
 
     if (this.platform.is('cordova')) {
       return this.fb.login(['email', 'public_profile'])
@@ -65,6 +81,11 @@ export class ChatPage {
 
   signOut() {
     this.afAuth.auth.signOut();
+  }
+
+  chatSend() {
+    this.items.push({ message: this.msgVal, name: this.displayName});
+    this.msgVal = '';
   }
 
 }
