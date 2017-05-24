@@ -13,6 +13,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ChatPageModule } from "../pages/chat/chat.module";
+import { TabsPage } from "../pages/tabs/tabs";
 
 export const firebaseConfig = {
 /*apiKey: "AIzaSyB1Za2wf9IAWLc194nhmrba8E6M8_9sSBU",
@@ -32,7 +33,8 @@ messagingSenderId: "872089775365"*/
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ messagingSenderId: "872089775365"*/
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage
   ],
   providers: [
     StatusBar,
