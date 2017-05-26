@@ -16,13 +16,13 @@
 <ion-content padding>
 
 <div>
-<h1>Hello {{displayName}}</h1>
-	<button *ngIf="!displayName" ion-button outline (click)="signInWithFacebook()">Login</button>
+<h1 *ngIf="displayName">Hello {{displayName}}</h1>
+	<button *ngIf="!displayName" ion-button outline (click)="signInWithFacebook()">Facebook Login</button>
   <button *ngIf="displayName" ion-button outline (click)="signOut()">Logout</button>
 </div>
 
 
-<div>
+<div *ngIf="displayName">
   <ion-list>
     <ion-list-header>
       Messages
@@ -34,15 +34,13 @@
 </div>
 
 
-<ion-item>
+<ion-item *ngIf="displayName">
     <ion-label color="primary" floating>Message</ion-label>
     <ion-input [(ngModel)]="msgVal"></ion-input>
 
 
 </ion-item>
-<button ion-button outline (click)="chatSend()">send  </button>
+<button *ngIf="displayName" ion-button outline (click)="chatSend()">send  </button>
 
-<h2>
-{{msgVal}}
-</h2>
+
 </ion-content>
